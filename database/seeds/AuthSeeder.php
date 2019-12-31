@@ -6,7 +6,7 @@ use MOCSolutions\Auth\Models\Usuario;
 use MOCSolutions\Core\Models\Configuracao;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class AuthSeeder extends Seeder
 {
     /**
      * Run the database seeds.
