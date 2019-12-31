@@ -1,0 +1,44 @@
+{
+  "name": "moc-solucoes/laravel-auth",
+  "description": "Módulo de autenticação no laravel.",
+  "type": "library",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "MOC Soluções",
+      "email": "contato@mocsolucoes.com.br",
+      "homepage": "https://www.mocsolucoes.com.br",
+      "role": "CEO,Developer"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "database/seeds",
+      "database/factories",
+      "database/migrations"
+    ],
+    "psr-4": {
+      "MOCSolutions\\Auth\\": "src/"
+    },
+    "extra": {
+      "laravel": {
+        "providers": [
+          "MOCSolutions\\Auth\\AppServiceProvider"
+        ],
+        "aliases": {
+        }
+      }
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://gitlab.com/laravel-modules1/core.git",
+      "reference": "master"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "laravel/framework": "^6.9"
+  }
+}
