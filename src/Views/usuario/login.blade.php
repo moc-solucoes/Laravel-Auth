@@ -1,4 +1,4 @@
-@extends('Core::shared.able-pro-externo')
+@extends('Core::shared.able-pro-externo.blade')
 
 @section('js')
     {{--
