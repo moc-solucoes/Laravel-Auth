@@ -39,11 +39,9 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 * Step 2 - Use the command    
     `composer install`
 
-* Step 3 - Edit a file `config/app.php` in array `providers` add the lines:
-`
-\MOCSolutions\Auth\AppServiceProvider::class,
- \MOCSolutions\Core\AppServiceProvider::class,
- `
+* Step 3 - Edit a file `config/app.php` in array `providers` add the lines: <br />
+`\MOCSolutions\Auth\AppServiceProvider::class,` <br />
+ `\MOCSolutions\Core\AppServiceProvider::class,`
 
 * Step 4 - Use the command `php artisan vendor:publish`, select first `Core Provider` after `Auth Provider`.
     
