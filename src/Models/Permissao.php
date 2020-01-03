@@ -9,6 +9,7 @@
 namespace MOCSolutions\Auth\Models;
 
 
+use App\Http\Models\Auth\Perfil;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -76,5 +77,99 @@ class Permissao extends Model
         })->groupby('nome')->get();
 
         return $permissoes;
+    }
+
+    /**
+     * @param $search
+     * @param $filtro
+     * @return Model
+     */
+    public function getQuantidade($search, $filtro = false): int
+    {
+        $objetos = $this
+            ->where(function ($q) use ($search) {
+                $q->where('nome', 'like', '%' . $search . '%');
+                $q->where('descricao', 'like', '%' . $search . '%');
+                $q->where('tipo', 'like', '%' . $search . '%');
+                $q->where('grupo', 'like', '%' . $search . '%');
+            });
+
+        $objetos = $this->filtrosForm($objetos, $filtro);
+
+        $objetos = $objetos->count();
+
+        return $objetos;
+    }
+
+    /**
+     * @param $search
+     * @param $filtro
+     * @return Model
+     */
+    public function getTotalFiltrado($search, $filtro = false): int
+    {
+        $objetos = $this;
+
+        if ($search != null) {
+            $objetos = $objetos->where(function ($q) use ($search) {
+                $q->where('nome', 'like', '%' . $search . '%');
+                $q->where('descricao', 'like', '%' . $search . '%');
+                $q->where('tipo', 'like', '%' . $search . '%');
+                $q->where('grupo', 'like', '%' . $search . '%');
+            });
+        }
+
+        $objetos = $this->filtrosForm($objetos, $filtro);
+
+        return $objetos->count();
+    }
+
+    /**
+     * @param $search
+     * @param $start
+     * @param $length
+     * @param $filtro
+     * @return Model
+     */
+    public function getResultadoBuscaPaginado($search, $start, $length, $filtro = false): Collection
+    {
+        $objetos = $this->select('id', 'nome', 'descricao', 'tipo', 'grupo', 'created_at', 'updated_at', 'deleted_at');
+
+        if ($search != null) {
+            $objetos = $objetos->where(function ($q) use ($search) {
+                $q->where('nome', 'like', '%' . $search . '%')
+                    ->orWhere('descricao', 'like', '%' . $search . '%')
+                    ->orWhere('tipo', 'like', '%' . $search . '%')
+                    ->orWhere('grupo', 'like', '%' . $search . '%');
+            });
+        }
+
+        $objetos = $this->filtrosForm($objetos, $filtro);
+
+        $objetos = $objetos
+            ->orderBy('nome')
+            ->orderByDesc('id')
+            ->skip($start)
+            ->take($length)
+            ->get();
+
+        return $objetos;
+    }
+
+    private function filtrosForm($objetos, $filtros)
+    {
+        /*if ($filtros->servico != 0)
+            $objetos = $objetos->where("servico_id", $filtros->servico);
+
+        if (!is_null($filtros->data))
+            $objetos = $objetos->where("data", $filtros->data);
+
+        if ($filtros->horaInicio)
+            $objetos = $objetos->where("hora_inicio", $filtros->horaInicio);
+
+        if (!is_null($filtros->situacao))
+            $objetos = $objetos->where("situacao", $filtros->situacao);*/
+
+        return $objetos;
     }
 }

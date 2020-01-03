@@ -439,7 +439,6 @@ class UsuarioController extends Controller
     private function _authenticate($md5 = false)
     {
         if (request()->has('email') and request()->has('senha')) {
-
             if (request()->session()->get("usuario")) {
                 throw new \Exception('Sessão já aberta para este dispositivo. ');
             }

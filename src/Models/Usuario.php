@@ -2,9 +2,7 @@
 
 namespace MOCSolutions\Auth\Models;
 
-use App\Http\Models\Fatura\Fatura;
 use MOCSolutions\Core\Models\Documento;
-use MOCSolutions\Core\Models\Projeto;
 use MOCSolutions\Core\Models\Telefone;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,14 +23,6 @@ class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
     protected $table = "auth_usuarios";
     public $timestamps = false;
 
-    public function UsuarioRedmine()
-    {
-        return $this->hasOne(
-            \App\Http\Models\Redmine\Usuario::class,
-            'id_usuario',
-            'id');
-    }
-
     /**
      * The perfil that belong to the user.
      */
@@ -43,15 +33,6 @@ class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
             'auth_perfil_usuario',
             'id_usuario',
             'id_perfil');
-    }
-
-    public function Faturas()
-    {
-        return $this->belongsToMany(
-            Fatura::class,
-            'fatura_usuarios',
-            'id_usuario',
-            'id_fatura');
     }
 
     public function Telefones()
@@ -75,7 +56,7 @@ class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
     {
         $result = $this->where("email", $email)->get();
 
-        return count($result) ? $result[0] : false;
+        return $result->count() ? $result->first() : false;
     }
 
     public function getByEmail($email)
@@ -128,7 +109,7 @@ class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
     /**
      * Set the token value for the "remember me" session.
      *
-     * @param  string $value
+     * @param string $value
      * @return void
      */
     public function setRememberToken($value)

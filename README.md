@@ -39,15 +39,24 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 * Step 2 - Use the command    
     `composer install`
 
-* Step 3 - Edit a file `config/app.php` in array `providers` add the lines: <br />
+* Step 3 - Edit the file `config/app.php` in array `providers` add the lines: <br />
 `\MOCSolutions\Auth\AppServiceProvider::class,` <br />
  `\MOCSolutions\Core\AppServiceProvider::class,`
 
 * Step 4 - Use the command `php artisan vendor:publish`, select first `Core Provider` after `Auth Provider`.
     
-* Step 5 - Add the view files to menu `resources/views/shared/_able-menu.blade.php` and `resources/views/shared/_able-menu-externo.blade.php`
+* Step 5 - Add the view  [files to menu](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) `resources/views/shared/_able-menu.blade.php` and `resources/views/shared/_able-menu-externo.blade.php`
 
-Example menus [Examples Menus](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared).
+* Step 6 - Edit the file `app/Http/Kernel.php` in array `$routeMiddleware` add the lines: <br />
+`'permission' => \MOCSolutions\Auth\Middleware\Permission::class,` <br />
+ `'authenticate' => \MOCSolutions\Auth\Middleware\Authenticate::class,`
+        
+* Step 7 - Add [the models files](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) of module on directory `app/Http/Models`
+
+
+**Example Models Files** [Examples Models](https://gitlab.com/laravel-modules1/auth/blob/master/Examples/app/Http/Models).
+
+**Example menus** [Examples Menus](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared).
  
  
 In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
