@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'MOCSolutions\Auth\Controllers'], function () {
+Route::group(['middleware' => ['web'], 'namespace' => 'MOCSolutions\Auth\Controllers', 'prefix' => '/auth'], function () {
     Route::get('/login', 'UsuarioController@loginView')->name('login');
     Route::post('/login', 'UsuarioController@login')->name('usuario.logar');
 
-    Route::group(['middleware' => ['web', \MOCSolutions\Auth\Middleware\Authenticate::class, \MOCSolutions\Auth\Middleware\Permission::class], 'prefix' => '/usuario'], function () {
+    Route::group(['middleware' => [\MOCSolutions\Auth\Middleware\Authenticate::class, \MOCSolutions\Auth\Middleware\Permission::class]], function () {
         Route::get('/logout', 'UsuarioController@logout')->name('usuario.logout');
         Route::get('/meus-dados', 'UsuarioController@meusDados')->name('usuario.meus-dados');
         Route::post('/alterar-senha', 'UsuarioController@alterarSenha')->name('usuario.alterar-senha');
