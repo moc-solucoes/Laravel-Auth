@@ -456,7 +456,7 @@ class UsuarioController extends Controller
 
                 if ($usuario->senha == $encryptedPassword['password']) {
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
-                    dd($usuario);
+
                     request()->session()->put('usuario', (object)$usuario->toArray());
 
                     return ['mensagem' => "Usuário autenticado com sucesso.", "usuario" => $usuario];
