@@ -9,7 +9,6 @@
 namespace MOCSolutions\Auth\Models;
 
 
-use App\Http\Models\Auth\Perfil;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 

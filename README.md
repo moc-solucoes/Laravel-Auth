@@ -51,19 +51,16 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 `'permission' => \MOCSolutions\Auth\Middleware\Permission::class,` <br />
  `'authenticate' => \MOCSolutions\Auth\Middleware\Authenticate::class,`
         
-* Step 7 - Add [the models files](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) of module on directory `app/Http/Models`
+* Step 7 - Add [the models files](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) of module on directory `app/Models`
 
 
-**Example Models Files** [Examples Models](https://gitlab.com/laravel-modules1/auth/blob/master/Examples/app/Http/Models).
+**Example Models Files** [Examples Models](https://gitlab.com/laravel-modules1/auth/blob/master/Examples/app/Models).
 
 **Example menus** [Examples Menus](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared).
  
- 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [contato@mocsolucoes.com.br](mailto:contato@mocsolucoes.com.br). All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within Laravel Auth, please send an e-mail to MOC Soluções via [contato@mocsolucoes.com.br](mailto:contato@mocsolucoes.com.br). All security vulnerabilities will be promptly addressed.
 
 ## Maintained by
 

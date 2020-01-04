@@ -4,7 +4,6 @@ namespace MOCSolutions\Auth\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use MOCSolutions\Auth\Models\Usuario;
-use App\Http\Service\AdminService;
 use MOCUtils\Helpers\Email;
 use MOCUtils\Helpers\Password;
 
