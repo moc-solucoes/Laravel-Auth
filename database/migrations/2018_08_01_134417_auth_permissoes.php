@@ -19,7 +19,7 @@ class AuthPermissoes extends Migration
             $table->string('descricao')->nullable();
             $table->string('tipo')->nullable();
             $table->string('grupo')->nullable();
-            $table->timestamp('dt_criacao')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

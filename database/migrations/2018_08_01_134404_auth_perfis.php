@@ -17,7 +17,7 @@ class AuthPerfis extends Migration
             $table->increments('id');
             $table->string('nome');
             $table->boolean('system')->default(false);
-            $table->timestamp('dt_criacao')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

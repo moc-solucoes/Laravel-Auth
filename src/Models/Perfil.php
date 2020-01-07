@@ -9,6 +9,7 @@
 namespace MOCSolutions\Auth\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 /**
  * Class Perfil

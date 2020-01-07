@@ -18,11 +18,34 @@ Route::group(['middleware' => ['web'], 'namespace' => 'MOCSolutions\Auth\Control
         Route::post('/cadastrar', 'UsuarioController@salvar')->name('usuario.cadastrar');
 
         Route::group(['prefix' => '/admin'], function () {
-            Route::group(['prefix' => '/usuario'], function () {
-                Route::get('/', 'Admin\UsuarioController@lista')->name('admin.usuario.listar');
-                Route::get('/cadastrar', 'Admin\UsuarioController@cadastrar')->name('admin.usuario.cadastrar');
-                Route::post('/cadastrar', 'Admin\UsuarioController@salvar')->name('admin.usuario.salvar');
-                Route::get('/detalhes', 'Admin\UsuarioController@detalhes')->name('admin.usuario.detalhes');
+            Route::group(['prefix' => '/usuario', 'namespace' => 'Admin'], function () {
+                Route::get('/', 'UsuarioController@lista')->name('auth.admin.usuario');
+                Route::get('/cadastrar', 'UsuarioController@cadastrar')->name('auth.admin.usuario.cadastrar');
+                Route::post('/cadastrar', 'UsuarioController@salvar')->name('auth.admin.usuario.salvar');
+                Route::get('/editar/{id?}', 'UsuarioController@editar')->name('auth.admin.usuario.editar');
+                Route::post('/editar/{id?}', 'UsuarioController@salvarEditar')->name('auth.admin.usuario.editar');
+
+                Route::group(['prefix' => '/perfil'], function () {
+                    Route::get('/', 'UsuarioController@perfis')->name('auth.admin.usuario.perfil');
+                    Route::get('/cadastrar', 'UsuarioController@cadastrarPerfil')->name('auth.admin.usuario.perfil.cadastrar');
+                    Route::post('/cadastrar', 'UsuarioController@salvarPerfil')->name('auth.admin.usuario.perfil.cadastrar');
+                    Route::get('/editar/{id?}', 'UsuarioController@editarPerfil')->name('auth.admin.usuario.perfil.editar');
+                    Route::post('/editar/{id?}', 'UsuarioController@salvarEditarPerfil')->name('auth.admin.usuario.perfil.editar');
+                });
+
+                Route::group(['prefix' => '/permissoes'], function () {
+                    Route::get('/', 'UsuarioController@permissoes')->name('auth.admin.usuario.permissao');
+                    Route::get('/cadastrar', 'UsuarioController@cadastrarPermissao')->name('auth.admin.usuario.permissao.cadastrar');
+                    Route::post('/cadastrar', 'UsuarioController@salvarPermissao')->name('auth.admin.usuario.permissao.cadastrar');
+                });
+            });
+
+            Route::group(['prefix' => '/api', 'namespace' => 'Api'], function () {
+                Route::group(['prefix' => '/usuario'], function () {
+                    Route::post('/lista', 'UsuarioController@index')->name('auth.admin.api.usuario');
+                    Route::post('/perfil/lista', 'UsuarioController@perfis')->name('auth.admin.api.usuario.perfil');
+                    Route::post('/permissao/lista', 'UsuarioController@permissoes')->name('auth.admin.api.usuario.permissao');
+                });
             });
         });
     });

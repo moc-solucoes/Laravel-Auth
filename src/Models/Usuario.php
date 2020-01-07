@@ -2,9 +2,11 @@
 
 namespace MOCSolutions\Auth\Models;
 
+use MOCSolutions\Core\Interfaces\Datatable;
 use MOCSolutions\Core\Models\Documento;
 use MOCSolutions\Core\Models\Telefone;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class Usuario
@@ -18,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string senha
  * @property string dt_criacao
  */
-class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatable
+class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatable, Datatable
 {
     protected $table = "auth_usuarios";
     public $timestamps = false;
@@ -125,5 +127,78 @@ class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
     public function getRememberTokenName()
     {
         // TODO: Implement getRememberTokenName() method.
+    }
+
+
+    /**
+     * @param $search
+     * @param $filtro
+     * @return Model
+     */
+    public function getQuantidade($search, $filtro = false): int
+    {
+        $objetos = $this->refined($this, $search);
+        $objetos = $this->filtrosForm($objetos, $filtro);
+        $objetos = $objetos->count();
+
+        return $objetos;
+
+    }
+
+    /**
+     * @param $search
+     * @param $filtro
+     * @return Model
+     */
+    public function getTotalFiltrado($search, $filtro = false): int
+    {
+        $objetos = $this->refined($this, $search);
+        $objetos = $this->filtrosForm($objetos, $filtro);
+
+        return $objetos->count();
+    }
+
+    /**
+     * @param $search
+     * @param $start
+     * @param $length
+     * @param $filtro
+     * @return Model|Collection
+     */
+    public function getResultadoBuscaPaginado($search, $start, $length, $filtro = false): Collection
+    {
+        $objetos = $this->select('id', 'nome', 'email');
+
+        $objetos = $this->refined($objetos, $search);
+        $objetos = $this->filtrosForm($objetos, $filtro);
+
+        $objetos = $objetos
+            ->orderByDesc('id')
+            ->orderBy('nome')
+            ->skip($start)
+            ->take($length)
+            ->get();
+
+        return $objetos;
+    }
+
+    private function refined($objects, $search)
+    {
+        if ($search != null) {
+            $objects = $objects->where(function ($q) use ($search) {
+                $q->orWhere('nome', 'like', '%' . $search . '%');
+                $q->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        return $objects;
+    }
+
+    private function filtrosForm($objetos, $filtros)
+    {
+        /*if ($filtros->servico != 0)
+            $objetos = $objetos->where("servico_id", $filtros->servico);
+        */
+        return $objetos;
     }
 }
