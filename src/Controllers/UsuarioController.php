@@ -10,6 +10,7 @@ use MOCSolutions\Core\Models\Documento;
 use MOCSolutions\Core\Models\Telefone;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Session;
+use MOCSolutions\Traits\UsuarioTrait;
 use MOCUtils\Helpers\Email;
 use MOCUtils\Helpers\Password;
 use MOCUtils\Helpers\SlackException;
@@ -21,92 +22,7 @@ use MOCUtils\Helpers\Transaction;
  */
 class UsuarioController extends Controller
 {
-    /**
-     * @Permission
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function apiSalvar()
-    {
-        try {
-            if (
-                request()->has("nome") &&
-                request()->has("senha") &&
-                request()->has("email")
-            ) {
-                $email = request()->input("email");
-
-                $usuario = (new Usuario())->checkUserEmail($email);
-
-                if (!$usuario) {
-                    $pass = password(request()->input("senha"));
-
-                    $transaction = new Transaction(function () use ($pass) {
-                        $usuario = new Usuario();
-                        $usuario->nome = trim(request()->input("nome"));
-
-                        if (!strpos($usuario->nome, " ")) {
-                            throw new \Exception("Nome completo incorreto.");
-                        }
-
-                        $usuario->email = request()->input("email");
-                        $usuario->senha = $pass['password'];
-                        $usuario->token = $pass['salt'];
-                        $usuario->save();
-
-                        $redmine = (new Redmine())->createUser($usuario);
-
-                        $usuarioRedmine = new \App\Http\Models\Redmine\Usuario();
-                        $usuarioRedmine->id_usuario = $usuario->id;
-                        $usuarioRedmine->id_redmine = $redmine->id;
-                        $usuarioRedmine->key = $redmine->api_key;
-                        $usuarioRedmine->save();
-
-                        return $usuario;
-                    });
-
-                    if ($transaction->hasError()) throw new \Exception($transaction->getError()->getMessage());
-
-                    return response()->json(["error" => false, "message" => "Usuário salvo com sucesso."]);
-                } else {
-                    return response()->json(["error" => true, "message" => "E-mail já cadastrado."]);
-                }
-            } else {
-                return response()->json(["error" => true, "message" => "Campos obrigatórios não preenchidos."]);
-            }
-        } catch (\Exception $e) {
-            return response()->json(["error" => true, "message" => $e->getMessage()]);
-        }
-    }
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function apiLogar()
-    {
-        try {
-            $result = $this->_authenticate();
-
-            return return_json($result['mensagem'], $result['usuario']);
-        } catch (\Exception $e) {
-            return return_json($e->getMessage(), null, true);
-        }
-    }
-
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function apiLogout()
-    {
-        try {
-            request()->session()->remove('usuario');
-
-            return return_json('Usuário deslogado com sucesso.', null, false);
-        } catch (\Exception $e) {
-            return return_json($e->getMessage(), null, true);
-        }
-    }
+    use UsuarioTrait;
 
     /**
      * @NotClinica
@@ -424,42 +340,5 @@ class UsuarioController extends Controller
         Session::put('usuario', (object)$token->Usuario->toArray());
 
         return redirect()->route('inicio');
-    }
-
-    /**
-     * @param bool $md5
-     * @return array
-     * @throws \Exception
-     */
-    private function _authenticate($md5 = false)
-    {
-        if (request()->has('email') and request()->has('senha')) {
-            if (request()->session()->get("usuario")) {
-                throw new \Exception('Sessão já aberta para este dispositivo. ');
-            }
-
-            $email = request()->input('email');
-            $senha = request()->input('senha');
-
-            $senha = $md5 ? md5($senha) : $senha;
-
-            $usuario = (new Usuario())->checkUserEmail($email);
-
-            if ($usuario) {
-                $encryptedPassword = password($senha, $usuario->token);
-
-                if ($usuario->senha == $encryptedPassword['password']) {
-                    $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
-
-                    request()->session()->put('usuario', (object)$usuario->toArray());
-
-                    return ['mensagem' => "Usuário autenticado com sucesso.", "usuario" => $usuario];
-                } else {
-                    throw new \Exception('Senha inválida.');
-                }
-            } else {
-                throw new \Exception('E-mail não cadastrado.');
-            }
-        }
     }
 }
