@@ -2,6 +2,9 @@
 
 namespace MOCSolutions\Auth\Traits;
 
+use MOCSolutions\Auth\Models\Permissao;
+use MOCSolutions\Auth\Models\Usuario;
+
 trait UsuarioTrait
 {
     /**
