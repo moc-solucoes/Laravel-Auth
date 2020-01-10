@@ -32,7 +32,7 @@ trait UsuarioTrait
                 if ($usuario->senha == $encryptedPassword['password']) {
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
 
-                    $usuario = $api ? $usuario->select('nome', 'email') : $usuario;
+                    $usuario = $api ? $this->formatToApi($usuario) : $usuario;
                     if (!$api) request()->session()->put('usuario', (object)$usuario->toArray());
 
                     return ['mensagem' => "Usuário autenticado com sucesso.", "usuario" => $usuario];
@@ -43,5 +43,11 @@ trait UsuarioTrait
                 throw new \Exception('E-mail não cadastrado.');
             }
         }
+    }
+
+    private function formatToApi(Usuario $usuario)
+    {
+        $usuario->Permissoes =  $usuario->Permissoes->mode('nome');
+        return $usuario->only('nome', 'email', 'Permissoes');
     }
 }

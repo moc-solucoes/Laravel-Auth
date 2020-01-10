@@ -61,7 +61,7 @@ class Permissao extends Model
 
     /**
      * @param $idUsuario
-     * @return mixed
+     * @return Permissao[]
      */
     public function getByUser($idUsuario)
     {

@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadRoutesFrom(__DIR__ . DS . '..' . DS . 'routes' . DS . 'web.php');
-        $this->loadRoutesFrom(__DIR__ . DS . '..' . DS . 'routes' . DS . 'api.php');
+        if (env('AUTH_MOBILE')) $this->loadRoutesFrom(__DIR__ . DS . '..' . DS . 'routes' . DS . 'api.php');
         $this->loadViewsFrom(__DIR__ . DS . 'Views', 'Auth');
         $this->loadMigrationsFrom(__DIR__ . DS . '..' . DS . 'database' . DS . 'migrations');
         $this->publishes([
@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->mapWebRoutes();
-        $this->mapApiRoutes();
+        if (env('AUTH_MOBILE')) $this->mapApiRoutes();
     }
 
     protected function mapWebRoutes()

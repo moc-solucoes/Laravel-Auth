@@ -54,6 +54,10 @@ class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatabl
             'id');
     }
 
+    /**
+     * @param $email
+     * @return bool|Usuario
+     */
     public function checkUserEmail($email)
     {
         $result = $this->where("email", $email)->get();
