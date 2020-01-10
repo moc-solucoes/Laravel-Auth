@@ -4,7 +4,7 @@ namespace MOCSolutions\Auth\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
 use MOCSolutions\Auth\Models\Usuario;
-use MOCSolutions\Traits\UsuarioTrait;
+use MOCSolutions\Auth\Traits\UsuarioTrait;
 
 /**
  * Class UsuarioController

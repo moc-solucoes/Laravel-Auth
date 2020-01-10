@@ -1,6 +1,6 @@
 <?php
 
-namespace MOCSolutions\Traits;
+namespace MOCSolutions\Auth\Traits;
 
 trait UsuarioTrait
 {
