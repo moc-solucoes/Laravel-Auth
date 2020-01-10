@@ -26,12 +26,11 @@ trait UsuarioTrait
 
             $usuario = (new Usuario())->checkUserEmail($email);
 
-            $usuario = $api ? $usuario->select('nome', 'email') : $usuario;
-
             if ($usuario) {
                 $encryptedPassword = password($senha, $usuario->token);
 
                 if ($usuario->senha == $encryptedPassword['password']) {
+                    $usuario = $api ? $usuario->select('nome', 'email') : $usuario;
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
 
                     if (!$api) request()->session()->put('usuario', (object)$usuario->toArray());
