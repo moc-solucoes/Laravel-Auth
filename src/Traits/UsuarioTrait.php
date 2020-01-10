@@ -26,6 +26,8 @@ trait UsuarioTrait
 
             $usuario = (new Usuario())->checkUserEmail($email);
 
+            $usuario = $api ? $usuario->select('nome', 'email') : $usuario;
+
             if ($usuario) {
                 $encryptedPassword = password($senha, $usuario->token);
 
