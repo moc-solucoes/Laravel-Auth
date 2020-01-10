@@ -30,9 +30,9 @@ trait UsuarioTrait
                 $encryptedPassword = password($senha, $usuario->token);
 
                 if ($usuario->senha == $encryptedPassword['password']) {
-                    $usuario = $api ? $usuario->select('nome', 'email') : $usuario;
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
 
+                    $usuario = $api ? $usuario->select('nome', 'email') : $usuario;
                     if (!$api) request()->session()->put('usuario', (object)$usuario->toArray());
 
                     return ['mensagem' => "Usuário autenticado com sucesso.", "usuario" => $usuario];
