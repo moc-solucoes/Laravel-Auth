@@ -24,16 +24,6 @@ class UsuarioController extends Controller
     {
         try {
             $result = $this->_authenticate(true, true);
-            $usuario = (object)$result['usuario'];
-
-            $token = new Token();
-            $token->token = md5($usuario->id . time());
-            $token->id_usuario = $usuario->id;
-            $token->expiracao = Carbon::now()->addHour(3)->toDateTimeString();
-            $token->server_info = collect($_SERVER)->toJson();
-            $token->save();
-
-            $usuario->token = $token->token;
 
             return return_json($result['mensagem'], $result['usuario']);
         } catch (\Exception $e) {

@@ -3,6 +3,7 @@
 namespace MOCSolutions\Auth\Traits;
 
 use MOCSolutions\Auth\Models\Permissao;
+use MOCSolutions\Auth\Models\Token;
 use MOCSolutions\Auth\Models\Usuario;
 
 trait UsuarioTrait
@@ -48,6 +49,16 @@ trait UsuarioTrait
     private function formatToApi(Usuario $usuario)
     {
         $usuario->Permissoes = $usuario->Permissoes->mode('nome');
+
+        $token = new Token();
+        $token->token = md5($usuario->id . time());
+        $token->id_usuario = $usuario->id;
+        $token->expiracao = Carbon::now()->addHour(3)->toDateTimeString();
+        $token->server_info = collect($_SERVER)->toJson();
+        $token->save();
+
+        $usuario->token = $token->token;
+
         return $usuario->only('id', 'nome', 'email', 'Permissoes');
     }
 }
