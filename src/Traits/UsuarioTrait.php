@@ -2,6 +2,7 @@
 
 namespace MOCSolutions\Auth\Traits;
 
+use Illuminate\Support\Carbon;
 use MOCSolutions\Auth\Models\Permissao;
 use MOCSolutions\Auth\Models\Token;
 use MOCSolutions\Auth\Models\Usuario;
