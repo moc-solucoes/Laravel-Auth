@@ -60,6 +60,6 @@ trait UsuarioTrait
 
         $usuario->token = $token->token;
 
-        return $usuario->only('id', 'nome', 'email', 'Permissoes');
+        return $usuario->only('id', 'nome', 'email', 'token', 'Permissoes');
     }
 }
