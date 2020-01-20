@@ -1,17 +1,21 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: maike.carvalho
- * Date: 01/08/2018
- * Time: 14:36
- */
 
 namespace MOCSolutions\Auth\Models;
 
-use MocOrm\Support\Model;
+use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Token
+ * @package App\Http\Models\Auth
+ * @property int id
+ * @property int id_usuario
+ * @property string token
+ * @property string server_info
+ * @property datetime expiracao
+ * @property datetime dt_criacao
+ */
 class Token extends Model
 {
-    static $table_name = 'auth_tokens';
-    static $primary_key = 'id';
+    protected $table = "auth_tokens";
+    public $timestamps = false;
 }

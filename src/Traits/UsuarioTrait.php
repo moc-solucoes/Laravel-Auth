@@ -47,7 +47,7 @@ trait UsuarioTrait
 
     private function formatToApi(Usuario $usuario)
     {
-        $usuario->Permissoes =  $usuario->Permissoes->mode('nome');
-        return $usuario->only('nome', 'email', 'Permissoes');
+        $usuario->Permissoes = $usuario->Permissoes->mode('nome');
+        return $usuario->only('id', 'nome', 'email', 'Permissoes');
     }
 }
