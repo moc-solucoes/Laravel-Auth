@@ -5,6 +5,7 @@ namespace MOCSolutions\Auth;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 use Illuminate\Support\Facades\Route;
+use MOCSolutions\Auth\Middleware\AuthenticateApi;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -53,7 +54,7 @@ class AppServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
+            ->middleware(['api', AuthenticateApi::class])
             ->namespace($this->namespace)
             ->group(__DIR__ . DS . '..' . DS . 'routes' . DS . 'api.php');
     }

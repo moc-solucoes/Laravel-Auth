@@ -18,4 +18,9 @@ class Token extends Model
 {
     protected $table = "auth_tokens";
     public $timestamps = false;
+
+    public function Usuario()
+    {
+        return $this->hasOne(Usuario::class, 'id', 'id_usuario');
+    }
 }
