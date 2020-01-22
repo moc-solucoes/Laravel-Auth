@@ -35,6 +35,8 @@ class AuthenticateApi
 
         if (!$token) return return_json("Token not exists.", null, true);
 
-        return $next($request, $token);
+        $request->Token = $token;
+
+        return $next($request);
     }
 }
