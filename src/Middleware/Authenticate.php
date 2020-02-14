@@ -3,7 +3,6 @@
 namespace MOCSolutions\Auth\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Factory as Auth;
 use Illuminate\Http\Request;
 
 class Authenticate

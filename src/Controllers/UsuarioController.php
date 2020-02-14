@@ -32,7 +32,7 @@ class UsuarioController extends Controller
     {
 //        request()->session()->remove('usuario');
         request()->session()->flush();
-        auth()->logout();
+//        auth()->logout();
         return redirect()->route('usuario.logar');
     }
 

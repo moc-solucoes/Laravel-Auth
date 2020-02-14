@@ -3,6 +3,7 @@
 namespace MOCSolutions\Auth\Traits;
 
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use MOCSolutions\Auth\Models\Permissao;
 use MOCSolutions\Auth\Models\Token;
 use MOCSolutions\Auth\Models\Usuario;
@@ -35,7 +36,10 @@ trait UsuarioTrait
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
 
                     $usuario = $api ? $this->formatToApi($usuario) : $usuario;
-                    if (!$api) request()->session()->put('usuario', (object)$usuario->toArray());
+                    if (!$api) {
+//                        Auth::login($usuario);
+                        request()->session()->put('usuario', (object)$usuario->toArray());
+                    }
 
                     return ['mensagem' => "Usuário autenticado com sucesso.", "usuario" => $usuario];
                 } else {

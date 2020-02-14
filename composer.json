@@ -28,7 +28,10 @@
         "aliases": {
         }
       }
-    }
+    },
+    "files": [
+      "Helpers/Functions.php"
+    ]
   },
   "repositories": [
     {
