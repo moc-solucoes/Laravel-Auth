@@ -16,3 +16,40 @@ if (!function_exists('user')) {
         } else return null;
     }
 }
+
+if (!function_exists('permissions')) {
+    function permissions()
+    {
+        $user = user();
+
+        if ($user) {
+            return $user->Permissoes;
+        } else return null;
+    }
+}
+
+if (!function_exists('hasPermission')) {
+    function hasPermission($permission)
+    {
+        $search = array_filter(user()->Permissoes, function ($value) use ($permission) {
+            if ($permission == $value->nome) {
+                return $value;
+            }
+        });
+
+        return count($search) > 0;
+    }
+}
+
+if (!function_exists('has_permission')) {
+    function has_permission($permission)
+    {
+        $search = array_filter(user()->Permissoes, function ($value) use ($permission) {
+            if ($permission == $value->nome) {
+                return $value;
+            }
+        });
+
+        return count($search) > 0;
+    }
+}
