@@ -20,6 +20,10 @@
     "psr-4": {
       "MOCSolutions\\Auth\\": "src/"
     },
+    "files": [
+      "Helpers/Functions.php"
+    ]
+  },
     "extra": {
       "laravel": {
         "providers": [
@@ -29,10 +33,6 @@
         }
       }
     },
-    "files": [
-      "Helpers/Functions.php"
-    ]
-  },
   "repositories": [
     {
       "type": "gitlab",
