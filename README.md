@@ -41,6 +41,9 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 
 **Example menus** [Examples Menus](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared).
  
+## License
+This library is released under the [MIT license](https://github.com/moc-solucoes/Laravel-Auth/blob/master/LICENSE).
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel Auth, please send an e-mail to MOC Soluções via [contato@mocsolucoes.com.br](mailto:contato@mocsolucoes.com.br). All security vulnerabilities will be promptly addressed.
