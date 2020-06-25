@@ -24,22 +24,15 @@
       "Helpers/Functions.php"
     ]
   },
-    "extra": {
-      "laravel": {
+  "extra": {
+     "laravel": {
         "providers": [
           "MOCSolutions\\Auth\\AppServiceProvider"
         ],
         "aliases": {
         }
       }
-    },
-  "repositories": [
-    {
-      "type": "gitlab",
-      "url": "https://gitlab.com/laravel-modules1/core.git",
-      "branch": "master"
-    }
-  ],
+  },
   "require": {
     "php": ">=7.0.1",
     "laravel/framework": ">=5.6",
