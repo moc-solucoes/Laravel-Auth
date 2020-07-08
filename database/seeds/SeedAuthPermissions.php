@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use MOCSolutions\Auth\Models\Perfil;
 use MOCSolutions\Auth\Models\Permissao;
 
-class AuthPermissions extends Seeder
+class SeedAuthPermissions extends Seeder
 {
     /**
      * Run the database seeds.
