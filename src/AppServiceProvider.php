@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
         if (env('AUTH_MOBILE')) $this->loadRoutesFrom(__DIR__ . DS . '..' . DS . 'routes' . DS . 'api.php');
         $this->loadViewsFrom(__DIR__ . DS . 'Views', 'Auth');
         $this->loadMigrationsFrom(__DIR__ . DS . '..' . DS . 'database' . DS . 'migrations');
-        $this->publishes([
+        /*$this->publishes([
             __DIR__ . DS . '..' . DS . 'public' => public_path()
-        ], 'Auth/public');
+        ], 'Auth/public');*/
     }
 
     /**
