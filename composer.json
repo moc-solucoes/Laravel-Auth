@@ -2,7 +2,7 @@
   "name": "moc-solucoes/laravel-auth",
   "type": "library",
   "description": "Módulo de autenticação no laravel.",
-  "license": "MIT",
+  "license": "GNU",
   "homepage": "https://www.mocsolucoes.com.br",
   "authors": [
     {
