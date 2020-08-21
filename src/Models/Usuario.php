@@ -23,7 +23,6 @@ use Illuminate\Database\Eloquent\Collection;
 class Usuario extends Model implements \Illuminate\Contracts\Auth\Authenticatable, Datatable
 {
     protected $table = "auth_usuarios";
-    public $timestamps = false;
 
     /**
      * The perfil that belong to the user.

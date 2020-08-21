@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://mocsolucoes.com.br/logo" width="200" align="center" />
+    <img src="https://mocsolucoes.com.br/img/web_logo.png" width="200" align="center" />
 </p>
 
 ## About Auth Module
@@ -34,8 +34,10 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 `'permission' => \MOCSolutions\Auth\Middleware\Permission::class,` <br />
  `'authenticate' => \MOCSolutions\Auth\Middleware\Authenticate::class,`
         
-* Step 6 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/vuews`
+* Step 6 -  Edit the file `app/Http/Middleware/VerifyCsrfToken.php` in array `$except` add the line: <br />
+`'auth/admin/api/*'`
 
+* Step 7 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/views`
 
 **Example Models Files** [Examples Models](https://gitlab.com/laravel-modules1/auth/blob/master/Examples/app/Models).
 

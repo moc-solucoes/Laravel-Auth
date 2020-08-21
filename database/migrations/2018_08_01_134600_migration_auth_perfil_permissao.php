@@ -20,6 +20,7 @@ class MigrationAuthPerfilPermissao extends Migration
             $table->integer('id_permissao')->unsigned()->nullable();
             $table->foreign('id_permissao' )->references('id')->on('auth_permissoes')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('dt_criacao')->useCurrent();
+            $table->timestamps();
         });
     }
 

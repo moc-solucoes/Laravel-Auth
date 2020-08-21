@@ -22,7 +22,6 @@ use Illuminate\Support\Collection;
 class Perfil extends Model
 {
     protected $table = 'auth_perfis';
-    public $timestamps = false;
 
     /**
      * The perfil that belong to the user.

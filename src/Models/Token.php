@@ -17,7 +17,6 @@ use Illuminate\Database\Eloquent\Model;
 class Token extends Model
 {
     protected $table = "auth_tokens";
-    public $timestamps = false;
 
     public function Usuario()
     {

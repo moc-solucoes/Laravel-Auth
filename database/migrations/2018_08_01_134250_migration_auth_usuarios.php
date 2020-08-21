@@ -29,6 +29,7 @@ class MigrationAuthUsuarios extends Migration
             $table->string('token_google')->nullable();
             $table->string('token_linkedin')->nullable();
             $table->timestamp('dt_criacao')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

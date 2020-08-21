@@ -20,6 +20,7 @@ class MigrationAuthPerfilUsuario extends Migration
             $table->integer('id_usuario')->unsigned()->nullable();
             $table->foreign('id_usuario')->references('id')->on('auth_usuarios')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamp('dt_criacao')->useCurrent();
+            $table->timestamps();
         });
     }
 

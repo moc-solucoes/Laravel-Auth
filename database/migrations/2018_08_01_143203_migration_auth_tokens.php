@@ -22,6 +22,7 @@ class MigrationAuthTokens extends Migration
             $table->text('server_info')->nullable();
             $table->dateTime('expiracao')->nullable();
             $table->timestamp('dt_criacao')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

@@ -26,7 +26,6 @@ use Illuminate\Support\Facades\DB;
 class Permissao extends Model
 {
     protected $table = 'auth_permissoes';
-    public $timestamps = false;
 
     /**
      * The perfil that belong to the user.
