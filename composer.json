@@ -2,7 +2,7 @@
   "name": "moc-solucoes/laravel-auth",
   "type": "library",
   "description": "Módulo de autenticação no laravel.",
-  "license": "GNU",
+  "license": "AGPL-3.0-only",
   "homepage": "https://www.mocsolucoes.com.br",
   "authors": [
     {
@@ -26,13 +26,13 @@
     ]
   },
   "extra": {
-     "laravel": {
-        "providers": [
-          "MOCSolutions\\Auth\\AppServiceProvider"
-        ],
-        "aliases": {
-        }
+    "laravel": {
+      "providers": [
+        "MOCSolutions\\Auth\\AppServiceProvider"
+      ],
+      "aliases": {
       }
+    }
   },
   "require": {
     "php": ">=7.0.1",
