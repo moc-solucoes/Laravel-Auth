@@ -146,8 +146,8 @@ class Permissao extends Model
         $objetos = $this->filtrosForm($objetos, $filtro);
 
         $objetos = $objetos
-            ->orderBy('nome')
             ->orderByDesc('id')
+            ->orderBy('nome')
             ->skip($start)
             ->take($length)
             ->get();
