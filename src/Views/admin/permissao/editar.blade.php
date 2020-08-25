@@ -8,7 +8,7 @@
         <a href="{{route('auth.admin.usuario.permissao.cadastrar')}}">Cadastrar Permissão</a>
     </li>
     <li class="breadcrumb-item">
-        <a href="{{route('auth.admin.usuario.permissao.editar', ['permissao' => $permissao->id])}}">Editar Permissão</a>
+        <a href="{{route('auth.admin.usuario.permissao.editar', ['id' => $permissao->id])}}">Editar Permissão</a>
     </li>
 @endsection
 
@@ -20,7 +20,7 @@
     <div class="row">
         @include('Core::shared._messages')
     </div>
-    <form class="form-material" action="{{route('auth.admin.usuario.permissao.editar')}}" method="post">
+    <form class="form-material" action="{{route('auth.admin.usuario.permissao.editar', ['id' => $permissao->id])}}" method="post">
         @csrf
         <div class="row">
             <div class="col col-6">
