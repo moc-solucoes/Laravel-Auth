@@ -13,7 +13,7 @@
 @endsection
 
 @section('title')
-    Cadastrar Permissão
+    Editar Permissão
 @endsection
 
 @section('content')
@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col col-6">
                 <div class="form-group form-default">
-                    <input type="text" value="{{$permissao->nome}}" name="nome" class="form-control" required pattern="[a-zA-Z0-9\.\-]{3,}"
+                    <input type="text" value="{{$permissao->nome}}" name="nome" class="form-control fill" required pattern="[a-zA-Z0-9\.\-]{3,}"
                            title="Apenas caracteres de a à Z, 0 á 9 e de '.-' são permitidos."/>
                     <span class="form-bar"></span>
                     <label class="float-label">Nome</label>
@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col col-6">
                 <div class="form-group form-default">
-                    <input type="text" value="{{$permissao->descricao}}" name="descricao" class="form-control" required>
+                    <input type="text" value="{{$permissao->descricao}}" name="descricao" class="form-control fill" required>
                     <span class="form-bar"></span>
                     <label class="float-label">Descrição</label>
                 </div>
@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col col-6">
                 <div class="form-group form-default">
-                    <input type="text" value="{{$permissao->tipo}}" name="tipo" class="form-control" required pattern="[a-zA-Z0-9\.\-]{3,20}"
+                    <input type="text" value="{{$permissao->tipo}}" name="tipo" class="form-control fill" required pattern="[a-zA-Z0-9\.\-]{3,20}"
                            title="Apenas caracteres de a à Z, 0 á 9 e de '.-' são permitidos.">
                     <span class="form-bar"></span>
                     <label class="float-label">Tipo</label>
@@ -54,7 +54,7 @@
         <div class="row">
             <div class="col col-6">
                 <div class="form-group form-default">
-                    <input type="text" value="{{$permissao->grupo}}" name="grupo" class="form-control" required pattern="[a-zA-Z0-9\.\-]{3,}"
+                    <input type="text" value="{{$permissao->grupo}}" name="grupo" class="form-control fill" required pattern="[a-zA-Z0-9\.\-]{3,}"
                            title="Apenas caracteres de a à z - 0 á 9 e de '.' são permitidos.">
                     <span class="form-bar"></span>
                     <label class="float-label">Grupo</label>
