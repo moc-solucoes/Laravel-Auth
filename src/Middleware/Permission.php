@@ -47,7 +47,7 @@ class Permission
                 if (!hasPermission($permission_name)) {
                     return $request->isXmlHttpRequest() ?
                         return_json("Usuário não possui permissões para efetuar esta ação.", [], true) :
-                        redirect()->route('error.401');
+                        redirect()->route('auth.admin.error.401');
                 }
             } else {
                 return return_json("Usuário não está logado para efetuar esta ação.", [], true);

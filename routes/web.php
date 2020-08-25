@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web'], 'namespace' => 'MOCSolutions\Auth\Controllers', 'prefix' => '/auth'], function () {
     Route::get('/login', 'UsuarioController@loginView')->name('login');
     Route::post('/login', 'UsuarioController@login')->name('usuario.logar');
+    Route::post('/error/401', function() {
+        return view("Auth::admin.error.401");
+    })->name('auth.admin.error.401');
 
     Route::group(['middleware' => ['authenticate', 'permission']], function () {
         Route::get('/logout', 'UsuarioController@logout')->name('usuario.logout');
