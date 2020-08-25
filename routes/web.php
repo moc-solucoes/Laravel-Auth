@@ -40,6 +40,8 @@ Route::group(['middleware' => ['web'], 'namespace' => 'MOCSolutions\Auth\Control
                     Route::get('/', 'UsuarioController@permissoes')->name('auth.admin.usuario.permissao');
                     Route::get('/cadastrar', 'UsuarioController@cadastrarPermissao')->name('auth.admin.usuario.permissao.cadastrar');
                     Route::post('/cadastrar', 'UsuarioController@salvarPermissao')->name('auth.admin.usuario.permissao.cadastrar');
+                    Route::get('/editar/{id}', 'UsuarioController@editarPermissao')->name('auth.admin.usuario.permissao.editar');
+                    Route::post('/editar/{id}', 'UsuarioController@salvarEdicaoPermissao')->name('auth.admin.usuario.permissao.editar');
                 });
             });
 

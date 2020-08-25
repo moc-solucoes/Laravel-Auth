@@ -356,4 +356,58 @@ class UsuarioController extends Controller
         return view('Auth::admin.permissao.index');
     }
 
+
+    /**
+     * @Permission[administrar.usuarios.permissoes]
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function editarPermissao($id)
+    {
+        return view('Auth::admin.permissao.editar', [
+            'permissao' => Permissao::find($id)
+        ]);
+    }
+
+    /**
+     * @Permission[administrar.usuarios.permissoes]
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function salvarEdicaoPermissao($id)
+    {
+        request()->validate([
+            'nome' => 'required',
+            'descricao' => 'required',
+            'tipo' => 'required',
+            'grupo' => 'required',
+        ], [
+            'required' => 'O campo :attribute é obrigatório.',
+        ]);
+
+        $trasaction = new Transaction(function () use ($id) {
+            $permissao = Permissao::find($id);
+            $permissao->nome = request()->get('nome');
+            $permissao->descricao = request()->get('descricao');
+            $permissao->tipo = request()->get('tipo');
+            $permissao->grupo = request()->get('grupo');
+            $permissao->save();
+
+            return $permissao;
+        });
+
+        $erros = collect();
+
+        $retorno = $trasaction->getResults();
+
+        if ($trasaction->hasError()) {
+            $message = $trasaction->getError()->getMessage();
+            $erros->push($message);
+        }
+
+        if (count($erros)) {
+            return redirect()->back()->withErrors($erros);
+        }
+
+        return redirect()->back()->with(['success' => "Permissão <code> $retorno->nome </code> editada com sucesso."]);
+    }
+
 }

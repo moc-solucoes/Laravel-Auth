@@ -15,7 +15,8 @@
     </div>
     <div class="row mb-3">
         <div class="col col-12">
-            <a href="{{route('auth.admin.usuario.permissao.cadastrar')}}" class="btn btn-sm btn-primary font-weight-bold">
+            <a href="{{route('auth.admin.usuario.permissao.cadastrar')}}"
+               class="btn btn-sm btn-primary font-weight-bold">
                 <i class="fa fa-plus"></i> Nova Permissão
             </a>
         </div>
@@ -108,13 +109,7 @@
                     }, 'className': 'text-wrap text-center'
                 },
                 {'data': 'atualizado', 'className': 'text-wrap text-center'},
-                {
-                    'data': function (data) {
-                        var valor = data;
-                        var botoes = '<button data-toggle="modal" data-target="#modalDetalhes" class="btn btn-xs btn-' + getCor(data.deleted_at) + ' text-white modal-detalhes"><i class="fa fa-eye small"></i></button> &nbsp;';
-                        return botoes;
-                    }, className: 'text-center'
-                },
+                {'data': 'botoes', 'className': 'text-wrap text-center'},
             ];
 
             var table = RenderDataTableServerSideOnPost(rotaListaApi, translate, columns, null, null, function (d) {

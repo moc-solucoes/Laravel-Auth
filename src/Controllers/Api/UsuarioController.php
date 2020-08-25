@@ -96,6 +96,7 @@ class UsuarioController extends Controller
         foreach ($permissoes as &$permissao) {
             $permissao->criado = convertToDateBr($permissao->created_at);
             $permissao->atualizado = convertToDateBr($permissao->updated_at);
+            $permissao->botoes = view('Auth::admin.permissao.editar', ['permissao' => $permissao])->render();
         }
 
         $result = [];
