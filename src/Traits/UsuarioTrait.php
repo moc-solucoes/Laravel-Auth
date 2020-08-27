@@ -35,9 +35,11 @@ trait UsuarioTrait
                 if ($usuario->senha == $encryptedPassword['password']) {
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
 
+                    $auth = Auth::login($usuario, true);
+
                     $usuario = $api ? $this->formatToApi($usuario) : $usuario;
                     if (!$api) {
-//                        Auth::login($usuario);
+
                         request()->session()->put('usuario', (object)$usuario->toArray());
                     }
 

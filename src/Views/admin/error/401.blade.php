@@ -29,7 +29,7 @@
         </div>
         <div class="row px-2 text-center m-4">
             <div class="col-12 text-center">
-                <a href="{{back()}}" class="btn btn-md btn-outline-danger">
+                <a href="{{back()->getTargetUrl()}}" class="btn btn-md btn-outline-danger">
                     <i class="fa fa-home"></i>
                     Voltar
                 </a>

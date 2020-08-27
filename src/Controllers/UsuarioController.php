@@ -30,9 +30,8 @@ class UsuarioController extends Controller
      */
     public function logout()
     {
-//        request()->session()->remove('usuario');
         request()->session()->flush();
-//        auth()->logout();
+        auth()->logout();
         return redirect()->route('usuario.logar');
     }
 

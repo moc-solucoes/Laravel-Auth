@@ -6,6 +6,8 @@
         <i class="fa fa-edit"></i>
     </a>
 @endif
+{{--
 <button data-toggle="modal" data-target="#modalDetalhes"
         class="btn btn-xs btn-primary text-white modal-detalhes"><i class="fa fa-eye small"></i>
-</button> &nbsp;
+</button>
+&nbsp;--}}
