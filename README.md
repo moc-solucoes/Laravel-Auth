@@ -26,18 +26,23 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 `\MOCSolutions\Auth\AppServiceProvider::class,` <br />
  `\MOCSolutions\Core\AppServiceProvider::class,`
 
-* Step 3 - Use the command `php artisan vendor:publish`, select first `Core Provider` after `Auth Provider`.
-    
-* Step 4 - Add the view  [files to menu](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) `resources/views/shared/_able-menu.blade.php` and `resources/views/shared/_able-menu-externo.blade.php`
 
-* Step 5 - Edit the file `app/Http/Kernel.php` in array `$routeMiddleware` add the lines: <br />
+* Step 3 - Edit the file `config/auth.php` in array `providers.users` change model: <br />
+`'model' => \APP\User::class,` to 
+ `'model' => \MOCSolutions\Auth\Models\Usuario::class,`
+
+* Step 4 - Use the command `php artisan vendor:publish`, select first `Core Provider` after `Auth Provider`.
+    
+* Step 5 - Add the view  [files to menu](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) `resources/views/shared/_able-menu.blade.php` and `resources/views/shared/_able-menu-externo.blade.php`
+
+* Step 6 - Edit the file `app/Http/Kernel.php` in array `$routeMiddleware` add the lines: <br />
 `'permission' => \MOCSolutions\Auth\Middleware\Permission::class,` <br />
  `'authenticate' => \MOCSolutions\Auth\Middleware\Authenticate::class,`
         
-* Step 6 -  Edit the file `app/Http/Middleware/VerifyCsrfToken.php` in array `$except` add the line: <br />
+* Step 7 -  Edit the file `app/Http/Middleware/VerifyCsrfToken.php` in array `$except` add the line: <br />
 `'auth/admin/api/*'`
 
-* Step 7 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/views`
+* Step 8 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/views`
 
 **Example Models Files** [Examples Models](https://gitlab.com/laravel-modules1/auth/blob/master/Examples/app/Models).
 
