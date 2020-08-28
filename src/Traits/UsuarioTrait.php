@@ -33,13 +33,13 @@ trait UsuarioTrait
                 $encryptedPassword = password($senha, $usuario->token);
 
                 if ($usuario->senha == $encryptedPassword['password']) {
+                    Auth::login($usuario, true);
+
                     $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
 
-                    $auth = Auth::login($usuario, true);
-
                     $usuario = $api ? $this->formatToApi($usuario) : $usuario;
-                    if (!$api) {
 
+                    if (!$api) {
                         request()->session()->put('usuario', (object)$usuario->toArray());
                     }
 
