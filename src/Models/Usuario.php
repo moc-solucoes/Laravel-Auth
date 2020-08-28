@@ -38,6 +38,11 @@ class Usuario extends User implements Datatable
 
     protected $table = "auth_usuarios";
 
+    public function can($abilities, $arguments = [])
+    {
+        return hasPermission($abilities);
+    }
+
     /**
      * The perfil that belong to the user.
      */
