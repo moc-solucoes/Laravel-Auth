@@ -49,7 +49,7 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 **Example menus** [Examples Menus](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared).
  
 ## License
-This library is released under the [MIT license](https://github.com/moc-solucoes/Laravel-Auth/blob/master/LICENSE).
+This library is released under the [AGPL-3.0 license](https://github.com/moc-solucoes/Laravel-Auth/blob/master/LICENSE).
 
 ## Security Vulnerabilities
 
