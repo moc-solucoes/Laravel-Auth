@@ -38,11 +38,6 @@ class Usuario extends User implements Datatable
 
     protected $table = "auth_usuarios";
 
-    public function getKey()
-    {
-        return 'id';
-    }
-
     /**
      * The perfil that belong to the user.
      */
