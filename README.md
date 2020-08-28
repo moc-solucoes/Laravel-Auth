@@ -20,7 +20,7 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 ## How Install
 
 * Step 1 - Use the command
-    composer install `moc-solutions/laravel-auth`
+    composer require `moc-solutions/laravel-auth`
 
 * Step 2 - Edit the file `config/app.php` in array `providers` add the lines: <br />
 `\MOCSolutions\Auth\AppServiceProvider::class,` <br />
