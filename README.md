@@ -15,12 +15,12 @@ Authenticate module is a module on Laravel framework, have the functions listed 
 This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.com.br).
 
 ## Dependencies
-   Unique dependencie is a module `moc-solutions/laravel-core`
+   Unique dependencie is a module `moc-solutions/laravel-core` (auto-install)
 
 ## How Install
 
 * Step 1 - Use the command
-    composer install `moc-solutions/laravel-core`
+    composer install `moc-solutions/laravel-auth`
 
 * Step 2 - Edit the file `config/app.php` in array `providers` add the lines: <br />
 `\MOCSolutions\Auth\AppServiceProvider::class,` <br />
