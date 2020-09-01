@@ -17,8 +17,8 @@ class SeedAuthSeeder extends Seeder
         $this->saveConfig();
 
         $this->call([
-            AuthPerfis::class,
-            AuthPermissoes::class,
+            SeedAuthPerfis::class,
+            SeedAuthPermissions::class,
         ]);
     }
 

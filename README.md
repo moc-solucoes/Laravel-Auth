@@ -42,11 +42,18 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 * Step 7 -  Edit the file `app/Http/Middleware/VerifyCsrfToken.php` in array `$except` add the line: <br />
 `'auth/admin/api/*'`
 
-* Step 8 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/views`
+* Step 8 - Execute te migrate using the command `php artisan migrate`
 
-**Example Models Files** [Examples Models](https://gitlab.com/laravel-modules1/auth/blob/master/Examples/app/Models).
+* Step 9 - Execute the seed to create init user and permissions, using command `php artisan db:seed -class=SeedAuthSeeder`
 
-**Example menus** [Examples Menus](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared).
+* Step 10 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/views`
+
+* Step 11 - Copy the **Example Models Files** [Examples Models](https://github.com/moc-solucoes/Laravel-Auth/tree/master/Examples/app/Models/Auth) to your project, into `app/Http/Models/Auth`
+
+
+**Example Models Files** [Examples Models](https://github.com/moc-solucoes/Laravel-Auth/tree/master/Examples/app/Models/Auth).
+
+**Example menus** [Examples Menus](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared).
  
 ## License
 This library is released under the [AGPL-3.0 license](https://github.com/moc-solucoes/Laravel-Auth/blob/master/LICENSE).
