@@ -33,7 +33,7 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 
 * Step 4 - Use the command `php artisan vendor:publish`, select first `Core Provider` after `Auth Provider`.
     
-* Step 5 - Add the view  [files to menu](https://gitlab.com/laravel-modules1/core/blob/master/Examples/shared) `resources/views/shared/_able-menu.blade.php` and `resources/views/shared/_able-menu-externo.blade.php`
+* Step 5 - Add the view  [files to menu](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) `resources/views/shared/_able-menu.blade.php` and `resources/views/shared/_able-menu-externo.blade.php`
 
 * Step 6 - Edit the file `app/Http/Kernel.php` in array `$routeMiddleware` add the lines: <br />
 `'permission' => \MOCSolutions\Auth\Middleware\Permission::class,` <br />
@@ -44,11 +44,9 @@ This module is private, exclusive using on [MOC Solutions](https://mocsolucoes.c
 
 * Step 8 - Execute te migrate using the command `php artisan migrate`
 
-* Step 9 - Execute the seed to create init user and permissions, using command `php artisan db:seed -class=SeedAuthSeeder`
+* Step 9 - Execute the seed to create init user and permissions, using command `php artisan db:seed --class=SeedAuthSeeder`
 
-* Step 10 - Add [the views files](https://github.com/moc-solucoes/Laravel-Core/tree/master/Examples/shared) of module on directory `resources/views`
-
-* Step 11 - Copy the **Example Models Files** [Examples Models](https://github.com/moc-solucoes/Laravel-Auth/tree/master/Examples/app/Models/Auth) to your project, into `app/Http/Models/Auth`
+* Step 10 - Copy the **Example Models Files** [Examples Models](https://github.com/moc-solucoes/Laravel-Auth/tree/master/Examples/app/Models/Auth) to your project, into `app/Http/Models/Auth`
 
 
 **Example Models Files** [Examples Models](https://github.com/moc-solucoes/Laravel-Auth/tree/master/Examples/app/Models/Auth).
