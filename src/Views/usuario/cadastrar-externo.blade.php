@@ -51,7 +51,7 @@
                             <label class="float-label">CPF</label>
                         </div>
                         <div class="form-group form-primary">
-                            <input type="text" name="senha" class="form-control fill" value="{{old("senha")}}">
+                            <input type="password" name="senha" class="form-control fill" value="{{old("senha")}}">
                             <span class="form-bar"></span>
                             <label class="float-label">Senha</label>
                         </div>
