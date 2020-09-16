@@ -222,7 +222,8 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $usuario->nome = $nome;
         $usuario->email = $emailFrm;
-        $usuario->senha = Password::generatePlain(10);
+//        $usuario->senha = Password::generatePlain(10);
+        $usuario->senha = request()->input('senha');
 
         try {
             $email = (new Email('novo_usuario', 'shared'))->setModel($usuario);
@@ -276,10 +277,7 @@ class UsuarioController extends Controller
             return redirect()->back()->withErrors($erros);
         }
 
-        $usuario->Permissoes = (new Permissao())->getByUser($usuario->id) ?: [];
-        Session::put('usuario', (object)$usuario->toArray());
-
-        return redirect()->route('inicio');
+        return $this->login();
     }
 
     /**

@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col col-md-5 col-lg-4 col-sm-12 col-xs-12 mx-auto">
-        @include('shared/_messages')
-            <!-- Authentication card start -->
+        @include('Core::shared._messages')
+        <!-- Authentication card start -->
             <form action="{{route('usuario.cadastrar')}}" method="post"
                   class="md-float-material form-material m-t-40 m-b-40">
                 {{csrf_field()}}
@@ -15,19 +15,8 @@
                                 <h3 class="text-center txt-primary">Cadastro de Usuário</h3>
                             </div>
                         </div>
-                        <div class="row m-b-20">
-                            <div class="col-md-6">
-                                <button class="btn btn-facebook m-b-20 btn-block btn-disabled" disabled><i
-                                        class="icofont icofont-social-facebook"></i>facebook
-                                </button>
-                            </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-google-plus m-b-20 btn-block btn-disabled" disabled>
-                                    <i class="icofont icofont-social-google-plus"></i> Google+
-                                </button>
-                            </div>
-                        </div>
-                        <p class="text-muted text-center p-b-5">Cadastrar conta na MOC Soluções, todos os campos são
+                        <p class="text-muted text-center p-b-5">Cadastrar conta na {{env('APP_NAME')}}, todos os campos
+                            são
                             obrigatórios.</p>
                         <div class="form-group form-primary">
                             <input type="text" name="nome" class="form-control fill" required=""
@@ -61,16 +50,13 @@
                             <span class="form-bar"></span>
                             <label class="float-label">CPF</label>
                         </div>
+                        <div class="form-group form-primary">
+                            <input type="text" name="senha" class="form-control fill" value="{{old("senha")}}">
+                            <span class="form-bar"></span>
+                            <label class="float-label">Senha</label>
+                        </div>
                         <div class="row m-t-25 text-left">
                             <div class="col-12">
-                                {{--<div class="checkbox-fade fade-in-primary">
-                                    <label>
-                                        <input type="checkbox" value="">
-                                        <span class="cr"><i
-                                                class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                        <span class="text-inverse">Remember me</span>
-                                    </label>
-                                </div>--}}
                                 <div class="forgot-phone text-right float-right">
                                     <a href="{{route('usuario.recuperar-senha')}}" class="text-right f-w-600">
                                         Recuperar senha?
@@ -104,7 +90,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".telefone").mask("(99) 9999-9999");
+            $(".telefone").mask("(99) 9999-99990");
             $(".celular").mask("(99) 9999-99990");
             $(".cpf").mask("999.999.999-99");
         });
