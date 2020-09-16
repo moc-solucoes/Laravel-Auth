@@ -14,18 +14,6 @@
                             <h3 class="text-center txt-primary">Cadastro de Usuário</h3>
                         </div>
                     </div>
-                    <div class="row m-b-20">
-                        <div class="col-md-6">
-                            <button class="btn btn-facebook m-b-20 btn-block btn-disabled" disabled><i
-                                    class="icofont icofont-social-facebook"></i>facebook
-                            </button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-google-plus m-b-20 btn-block btn-disabled" disabled>
-                                <i class="icofont icofont-social-google-plus"></i> Google+
-                            </button>
-                        </div>
-                    </div>
                     <p class="text-muted text-center p-b-5">Cadastrar conta na MOC Soluções, todos os campos são
                         obrigatórios.</p>
                     <div class="form-group form-primary">
@@ -56,6 +44,11 @@
                         <input type="text" name="cpf" class="form-control fill cpf" value="{{old("cpf")}}">
                         <span class="form-bar"></span>
                         <label class="float-label">CPF</label>
+                    </div>
+                    <div class="form-group form-primary">
+                        <input type="text" name="senha" class="form-control fill" value="{{old("senha")}}">
+                        <span class="form-bar"></span>
+                        <label class="float-label">Senha</label>
                     </div>
                     <div class="row m-t-25 text-left">
                         <div class="col-12">
@@ -99,7 +92,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $(".telefone").mask("(99) 9999-9999");
+            $(".telefone").mask("(99) 9999-99990");
             $(".celular").mask("(99) 9999-99990");
             $(".cpf").mask("999.999.999-99");
         });
