@@ -3,8 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web'], 'namespace' => 'MOCSolutions\Auth\Controllers', 'prefix' => '/auth'], function () {
-    Route::get('/login', 'UsuarioController@loginView')->name('login');
-    Route::post('/login', 'UsuarioController@login')->name('usuario.logar');
+    Route::group(['prefix' => '/login'], function (){
+        Route::get('/', 'UsuarioController@loginView')->name('login');
+        Route::post('/', 'UsuarioController@login')->name('usuario.logar');
+        Route::get('/social/{tipo}', 'UsuarioController@loginSocial')->name('auth.user.login.social');
+        Route::get('/social-callback/{tipo}', 'UsuarioController@login')->name('auth.user.login.calback.social');
+    });
+
     Route::get('/error/401', function() {
         return view("Auth::admin.error.401");
     })->name('auth.admin.error.401');

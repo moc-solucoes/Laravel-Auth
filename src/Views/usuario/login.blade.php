@@ -1,41 +1,6 @@
 @extends('Core::shared.able-pro-externo')
 
 @section('js')
-    {{--
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <meta name="google-signin-client_id" content="735816093549-cgu9d95uur1d1vkglmq3ec62dbeeid7n.apps.googleusercontent.com">
-        --}}
-    <script src="https://apis.google.com/js/platform.js?onload=onLoadGoogleCallback" async defer></script>
-
-    <script type="text/javascript">
-        function onSignIn(googleUser) {
-            var profile = googleUser.getBasicProfile();
-            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-            console.log('Name: ' + profile.getName());
-            console.log('Image URL: ' + profile.getImageUrl());
-            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        }
-
-        function onLoadGoogleCallback() {
-            gapi.load('auth2', function () {
-                auth2 = gapi.auth2.init({
-                    client_id: '735816093549-cgu9d95uur1d1vkglmq3ec62dbeeid7n.apps.googleusercontent.com',
-                    cookiepolicy: 'http://localhost',
-                    scope: 'profile'
-                });
-
-                auth2.attachClickHandler(element, {},
-                    function (googleUser) {
-                        onSignIn(googleUser);
-                    }, function (error) {
-                        console.log('Sign-in error', error);
-                    }
-                );
-            });
-
-            element = document.getElementById('googleSignIn');
-        }
-    </script>
 @endsection
 
 @section('content')

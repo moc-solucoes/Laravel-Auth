@@ -3,6 +3,7 @@
 namespace MOCSolutions\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use MOCSolutions\Auth\Models\Permissao;
 use MOCSolutions\Auth\Models\TokenSenha;
 use MOCSolutions\Auth\Models\Usuario;
@@ -181,6 +182,10 @@ class UsuarioController extends Controller
 
         try {
             $result = $this->_authenticate(true);
+
+            if (session()->has('last-url')) {
+                return Redirect::to(session()->get('last-url'));
+            }
 
             return redirect()->route('inicio');
         } catch (\Exception $e) {
