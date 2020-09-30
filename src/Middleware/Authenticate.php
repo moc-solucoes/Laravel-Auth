@@ -25,7 +25,7 @@ class Authenticate
             $comment = get_comments($controller, $action, "OpenPage");
 
             if (!$comment->quantity) {
-                session()->put('last-url', url()->current());
+                session()->put('last-url', url()->full());
 
                 return redirect()->route('login');
             }
