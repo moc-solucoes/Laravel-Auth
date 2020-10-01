@@ -157,7 +157,7 @@ class UsuarioController extends Controller
             return redirect()->route('usuario.logar')->withErrors("Seu e-mail não pode ser enviado contate um administrador.");
         }
 
-        return redirect()->route('usuario.logar')->with('message', 'Foi enviado um e-mail com instrução para concluir sua recuperação da senha.');
+        return redirect()->route('usuario.logar')->with('success', 'Foi enviado um e-mail com instrução para concluir sua recuperação da senha.');
     }
 
     /**

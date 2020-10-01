@@ -5,7 +5,8 @@
 
 @section('content')
     <div class="col col-md-5 col-lg-4 col-sm-12 col-xs-12 mx-auto">
-    @include('Core::shared/_messages')
+    @include('Core::shared._messages')
+
     <!-- Authentication card start -->
     <form action="{{route('usuario.logar')}}" method="post"
           class="md-float-material form-material m-t-40 m-b-40">

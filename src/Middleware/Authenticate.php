@@ -18,7 +18,7 @@ class Authenticate
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->id()) {
+        if (!user()) {
             $action = request()->route()->getActionMethod();
             $controller = explode('@', request()->route()->getAction()['controller'])[0];
 

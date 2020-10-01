@@ -3,8 +3,9 @@
 @section('content')
     <div class="col col-md-5 col-lg-4 col-sm-12 col-xs-12 mx-auto">
     <!-- Authentication card start -->
-    @include('Core::shared/_messages')
-    <form action="{{route('usuario.recuperar-senha')}}" method="post"
+        @include('Core::shared._messages')
+
+        <form action="{{route('usuario.recuperar-senha')}}" method="post"
           class="md-float-material form-material m-t-40 m-b-40">
         {{csrf_field()}}
         <div class="auth-box card">
