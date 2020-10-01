@@ -3,7 +3,9 @@
 namespace MOCSolutions\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use MOCSolutions\Auth\Mail\RecuperarSenhaMail;
 use MOCSolutions\Auth\Models\Permissao;
 use MOCSolutions\Auth\Models\TokenSenha;
 use MOCSolutions\Auth\Models\Usuario;
@@ -145,16 +147,12 @@ class UsuarioController extends Controller
         $token->id_usuario = $usuario->id;
         $token->save();
 
-        $token->expiracao = (new Carbon($token->expiracao))->format('d/m/Y H:m:i');
-
-        //ToDo Implmentar o envio do e-mail.
-        $email = (new Email('recuperar_senha', 'shared'))->setModel($usuario)->setModel($token);
-        $email->replaceAll();
-
         try {
-            $email->send($usuario->email, $usuario->nome);
+            Mail::queue(new RecuperarSenhaMail($usuario, $token));
         } catch (\Exception $e) {
-            return redirect()->route('usuario.logar')->withErrors("Seu e-mail não pode ser enviado contate um administrador.");
+            new SlackException($e->getMessage());
+
+            return redirect()->route('usuario.logar')->withErrors("Seu e-mail não pode ser enviado já recebemos uma notificação de erro, favor aguarde a correção do mesmo e tente novamente mais tarde ou contrate um administrador.");
         }
 
         return redirect()->route('usuario.logar')->with('success', 'Foi enviado um e-mail com instrução para concluir sua recuperação da senha.');

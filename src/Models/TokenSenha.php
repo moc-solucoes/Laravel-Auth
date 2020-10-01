@@ -26,6 +26,18 @@ class TokenSenha extends Model
     protected $table = "auth_tokens_senha";
     public $timestamps = false;
 
+    /**
+     * Get converted date to brl
+     * @return string|null
+     */
+    public function getExpiracaoBrlAttribute()
+    {
+        return convertToDateBr($this->getOriginal('expiracao'));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne|Usuario
+     */
     public function Usuario()
     {
         return $this->hasOne(
@@ -34,6 +46,10 @@ class TokenSenha extends Model
             'id_usuario');
     }
 
+    /**
+     * @param $token
+     * @return mixed
+     */
     public function getByToken($token)
     {
         return $this->where('token', $token)->where('ativo', true)->get();
