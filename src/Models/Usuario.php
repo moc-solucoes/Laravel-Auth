@@ -2,6 +2,7 @@
 
 namespace MOCSolutions\Auth\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User;
 use MOCSolutions\Core\Interfaces\Datatable;
 use MOCSolutions\Core\Models\Documento;
@@ -25,7 +26,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class Usuario extends User implements Datatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that should be hidden for arrays.

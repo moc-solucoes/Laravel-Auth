@@ -22,14 +22,7 @@ class UsuarioController extends Controller
      */
     public function lista()
     {
-        $usuarios = Usuario::all();
-
-        foreach ($usuarios as $usuario) {
-            $usuario->dt_criacao = convertToDateBr($usuario->dt_criacao);
-            $usuario->cor = $usuario->ativo ? 'success' : 'danger';
-        }
-
-        return view('Auth::admin.usuario.index', ['usuarios' => $usuarios]);
+        return view('Auth::admin.usuario.index');
     }
 
     /**
@@ -58,6 +51,19 @@ class UsuarioController extends Controller
         }
 
         return view('Auth::admin.usuario.editar', ['usuario' => $usuario, 'perfis' => $perfis]);
+    }
+
+    /**
+     * @Permission[administrar.usuarios]
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function excluir($id)
+    {
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+
+        return $this->lista()->with(['success' => "Usuário excluído com sucesso."]);
     }
 
     /**
@@ -355,7 +361,6 @@ class UsuarioController extends Controller
     {
         return view('Auth::admin.permissao.index');
     }
-
 
     /**
      * @Permission[administrar.usuarios.permissoes]

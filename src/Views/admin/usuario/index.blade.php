@@ -71,7 +71,6 @@
         $(document).ready(function () {
             var translate = '{{asset("json/Portuguese-Brasil.json")}}';
             var rotaListaApi = '{{route('auth.admin.api.usuario')}}';
-            var rotaEditar = '{{route('auth.admin.usuario.editar')}}';
 
             function getCor(situacao) {
                 return situacao != null ? 'danger' : 'primary';
@@ -91,12 +90,7 @@
                 {'data': 'nome', 'className': 'text-wrap'},
                 {'data': 'email', 'className': 'text-wrap'},
                 {'data': 'perfilImplode', 'className': 'text-wrap'},
-                {
-                    'data': function (data) {
-                        var botoes = '<a href="' + rotaEditar + '/' + data.id + '" class="btn btn-xs btn-' + getCor(data.deleted_at) + ' text-white"><i class="fa fa-edit small"></i> Editar </a> &nbsp;';
-                        return botoes;
-                    }, className: 'text-center'
-                },
+                {'data': 'botoes', className: 'text-center'},
             ];
 
             var table = RenderDataTableServerSideOnPost(rotaListaApi, translate, columns, null, null, null, createdRow);
