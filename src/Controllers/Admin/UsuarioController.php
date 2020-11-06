@@ -63,7 +63,7 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         $usuario->delete();
 
-        return $this->lista()->with(['success' => "Usuário excluído com sucesso."]);
+        return redirect()->route('auth.admin.usuario')->with(['success' => "Usuário excluído com sucesso."]);
     }
 
     /**
