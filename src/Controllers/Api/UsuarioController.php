@@ -50,7 +50,7 @@ class UsuarioController extends Controller
 
         foreach ($usuarios as $usuario) {
             $usuario->perfilImplode = $usuario->Perfis->implode('nome', ', ');
-            $usuario->botoes = view("Auth::admin.permissao._botoes", ['usuario' => $usuario]);
+            $usuario->botoes = view("Auth::admin.permissao._botoes", ['usuario' => $usuario])->render();
         }
 
         $result = [];
