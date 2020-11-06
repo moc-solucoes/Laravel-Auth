@@ -5,7 +5,7 @@
     </a> &nbsp;
 @endif
 @if (hasPermission('administrar.usuarios'))
-    <a class="btn btn-xs btn-outline-primary"
+    <a class="btn btn-xs btn-danger"
        href="{{route('auth.admin.usuario.excluir', ['id' => $usuario->id])}}" data-toggle="tooltip"
        data-placement="top"
        title="Excluir Usuário">
