@@ -32,6 +32,7 @@ Route::group(['middleware' => ['web'], 'namespace' => 'MOCSolutions\Auth\Control
                 Route::post('/cadastrar', 'UsuarioController@salvar')->name('auth.admin.usuario.salvar');
                 Route::get('/editar/{id?}', 'UsuarioController@editar')->name('auth.admin.usuario.editar');
                 Route::get('/excluir/{id}', 'UsuarioController@excluir')->name('auth.admin.usuario.excluir');
+                Route::get('/restaurar/{id}', 'UsuarioController@restaurar')->name('auth.admin.usuario.restaurar');
                 Route::post('/editar/{id?}', 'UsuarioController@salvarEditar')->name('auth.admin.usuario.editar');
 
                 Route::group(['prefix' => '/perfil'], function () {

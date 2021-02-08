@@ -128,7 +128,7 @@ class Usuario extends User implements Datatable
      */
     public function getResultadoBuscaPaginado($search, $start, $length, $filtro = false): Collection
     {
-        $objetos = $this->select('id', 'nome', 'email');
+        $objetos = $this->select('id', 'nome', 'email', 'deleted_at');
 
         $objetos = $this->refined($objetos, $search);
         $objetos = $this->filtrosForm($objetos, $filtro);
@@ -145,6 +145,8 @@ class Usuario extends User implements Datatable
 
     private function refined($objects, $search)
     {
+        $objects = $objects->withTrashed();
+
         if ($search != null) {
             $objects = $objects->where(function ($q) use ($search) {
                 $q->orWhere('nome', 'like', '%' . $search . '%');

@@ -65,6 +65,18 @@ class UsuarioController extends Controller
 
         return redirect()->route('auth.admin.usuario')->with(['success' => "Usuário excluído com sucesso."]);
     }
+    /**
+     * @Permission[administrar.usuarios]
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function restaurar($id)
+    {
+        $usuario = Usuario::onlyTrashed()->find($id);
+        $usuario->restore();
+
+        return redirect()->route('auth.admin.usuario')->with(['success' => "Usuário restaurado com sucesso."]);
+    }
 
     /**
      * @Permission[administrar.usuarios]
