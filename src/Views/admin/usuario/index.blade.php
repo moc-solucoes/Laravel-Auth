@@ -93,7 +93,12 @@
                 {'data': 'botoes', className: 'text-center'},
             ];
 
-            var table = RenderDataTableServerSideOnPost(rotaListaApi, translate, columns, null, null, null, createdRow);
+
+            function aditionalParam(d) {
+            }
+
+            var table = RenderDataTableServerSideOnPost(rotaListaApi, translate, columns, null, null, aditionalParam, createdRow);
+
 
             $('.dataTable tbody').on('click', 'tr', function () {
                 var data = table.row(this).data();
