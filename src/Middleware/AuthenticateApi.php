@@ -4,6 +4,7 @@ namespace MOCSolutions\Auth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MOCSolutions\Auth\Models\Token;
 
 class AuthenticateApi
@@ -32,6 +33,8 @@ class AuthenticateApi
         }
 
         $token = (new Token())->where("token", $request->bearerToken())->first();
+
+        Auth::login($token->Usuario, true);
 
         if (!$token) return return_json("Token not exists.", null, true);
 
