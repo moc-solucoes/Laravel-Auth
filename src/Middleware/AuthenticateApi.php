@@ -34,9 +34,9 @@ class AuthenticateApi
 
         $token = (new Token())->where("token", $request->bearerToken())->first();
 
-        Auth::login($token->Usuario, true);
-
         if (!$token) return return_json("Token not exists.", null, true);
+
+        Auth::login($token->Usuario, true);
 
         $request->Token = $token;
 
