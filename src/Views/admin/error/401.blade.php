@@ -1,4 +1,4 @@
-@extends('shared.able-pro')
+@extends('Core::shared.able-pro')
 
 @section('css')
 @endsection
