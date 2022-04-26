@@ -61,8 +61,8 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset(elixir('module/shared/css/datatable.css'))}}" type="text/css" media="all"/>
-    <link rel="stylesheet" href="{{asset(elixir('module/shared/css/mask-select2.css'))}}" type="text/css" media="all">
+    <link rel="stylesheet" href="{{asset(mix('module/shared/css/datatable.css'))}}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{{asset(mix('module/shared/css/mask-select2.css'))}}" type="text/css" media="all">
     <style type="text/css">
         .select2-container--default .select2-selection--single .select2-selection__placeholder {
             /*color: #fff;*/
@@ -99,8 +99,8 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{asset(elixir('module/shared/js/datatable.js'))}}"></script>
-    <script type="text/javascript" src="{{asset(elixir('module/shared/js/mask-select2.js'))}}"></script>
+    <script type="text/javascript" src="{{asset(mix('module/shared/js/datatable.js'))}}"></script>
+    <script type="text/javascript" src="{{asset(mix('module/shared/js/mask-select2.js'))}}"></script>
 
     <script type="text/javascript">
         $('#servico').val('0').trigger('change');
