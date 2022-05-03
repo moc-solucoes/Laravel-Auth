@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use MOCSolutions\Auth\Models\Usuario;
 use MOCSolutions\Core\Models\Configuracao;
-use Illuminate\Database\Seeders;
+use Illuminate\Database\Seeder;
 
 class SeedAuthSeeder extends Seeder
 {
@@ -42,7 +42,7 @@ class SeedAuthSeeder extends Seeder
     {
         $configuracao = new Configuracao();
         $configuracao->coluna = 'geral';
-        $std = new stdClass();
+        $std = new \stdClass();
         $std->logo = asset("images/logo.png");
         $configuracao->setValores($std);
         $configuracao->save();

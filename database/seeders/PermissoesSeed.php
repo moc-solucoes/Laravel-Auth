@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Auth\Perfil;
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Seeder;
 
 class PermissoesSeed extends Seeder
 {
