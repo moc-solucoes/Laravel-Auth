@@ -21,11 +21,18 @@ class AppServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . DS . 'Views', 'Auth');
         $this->loadMigrationsFrom(__DIR__ . DS . '..' . DS . 'database' . DS . 'migrations');
         $this->mergeConfigFrom(__DIR__ . DS . '..'.DS.'configs' . DS . 'services.php', 'services');
-        /*$this->publishes([
-            __DIR__ . DS . '..' . DS . 'public' => public_path()
-        ], 'Auth/public');*/
     }
+    private function publish()
+    {
+        $this->publishes([
+            __DIR__.'/../database/seeders' => database_path('seeders'),
+        ], ['auth-seeders']);
 
+        /*$this->publishes([
+           __DIR__ . DS . '..' . DS . 'public' => public_path()
+       ], 'Auth/public');*/
+        return $this;
+    }
     /**
      * Bootstrap services.
      *
@@ -33,7 +40,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->mapWebRoutes();
+        $this->publish()->mapWebRoutes();
+
         if (env('AUTH_MOBILE')) $this->mapApiRoutes();
     }
 
