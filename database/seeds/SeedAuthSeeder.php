@@ -20,7 +20,6 @@ class SeedAuthSeeder extends Seeder
         $this->call([
             SeedAuthPerfis::class,
             PermissoesSeed::class,
-            MailTemplateSeed::class,
         ]);
     }
 
