@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use MOCSolutions\Auth\Models\Perfil;
 use MOCSolutions\Auth\Models\Usuario;

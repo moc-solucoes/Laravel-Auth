@@ -1,9 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
 use Database\Seeders\PermissoesSeed;
 use MOCSolutions\Auth\Models\Usuario;
 use MOCSolutions\Core\Models\Configuracao;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Seeders;
 
 class SeedAuthSeeder extends Seeder
 {
