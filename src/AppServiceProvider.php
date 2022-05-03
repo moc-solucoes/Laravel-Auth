@@ -28,11 +28,11 @@ class AppServiceProvider extends ServiceProvider
             __DIR__.'/../database/seeders' => database_path('seeders'),
         ], ['auth-seeders']);
 
-        /*
+
         $this->publishes([
            __DIR__ . DS . '..' . DS . 'public' => public_path()
-        ], 'Auth/public');
-        */
+        ], 'auth-public');
+
         return $this;
     }
     /**
