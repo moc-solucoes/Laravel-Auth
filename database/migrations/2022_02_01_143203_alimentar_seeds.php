@@ -15,7 +15,7 @@ class AlimentarSeeds extends Migration
     {
         Artisan::call('db:seed', [
             '--force' => true,
-            '--class' => Illuminate\Database\Seeder\SeedAuthSeeder::class,
+            '--class' => Database\Seeders\SeedAuthSeeder::class,
         ]);
     }
 
