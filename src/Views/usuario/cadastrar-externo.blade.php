@@ -86,7 +86,7 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{asset(mix('module/shared/js/mask-select2.js'))}}"></script>
+    <script type="text/javascript" src="{{asset('module/shared/js/mask-select2.js')}}"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

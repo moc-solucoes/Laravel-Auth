@@ -57,11 +57,11 @@
 @endsection
 
 @section('css')
-    <link rel="stylesheet" href="{{asset(mix('module/shared/css/datatable.css'))}}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{{asset('module/shared/css/datatable.css')}}" type="text/css" media="all"/>
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{asset(mix('module/shared/js/datatable.js'))}}"></script>
+    <script type="text/javascript" src="{{asset('module/shared/js/datatable.js')}}"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

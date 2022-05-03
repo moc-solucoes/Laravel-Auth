@@ -94,7 +94,7 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{asset(mix('module/shared/js/select2.js'))}}"></script>
+    <script type="text/javascript" src="{{asset('module/shared/js/select2.js')}}"></script>
     <script type="text/javascript">
         $(".cpf").mask("999.999.999-99");
         $(".data").mask("99/99/9999");
