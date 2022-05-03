@@ -24,11 +24,9 @@ class AppServiceProvider extends ServiceProvider
     }
     private function publish()
     {
-        /*
         $this->publishes([
             __DIR__.'/../database/seeders' => database_path('seeders'),
         ], ['auth-seeders']);
-        */
 
         /*
         $this->publishes([
