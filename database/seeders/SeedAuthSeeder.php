@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\PermissoesSeed;
 use MOCSolutions\Auth\Models\Usuario;
 use MOCSolutions\Core\Models\Configuracao;
 use Illuminate\Database\Seeders;
